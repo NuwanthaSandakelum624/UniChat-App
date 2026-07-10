@@ -9,8 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: yjjnpi/buildozer-action@master
+      - uses: actions/checkout@v4
+      - name: Build with Buildozer
+        uses: kivy/buildozer-action@master
         with:
           buildozer_version: latest
         env:
