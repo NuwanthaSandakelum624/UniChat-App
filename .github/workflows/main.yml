@@ -21,7 +21,6 @@ jobs:
 
       - name: Build APK
         run: buildozer android debug
-        # ඔයාගේ buildozer.spec ෆයිල් එක ප්‍රධාන තැනම තියෙනවා නම් මෙතන වෙනසක් කරන්න එපා.
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
