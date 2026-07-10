@@ -20,6 +20,32 @@ jobs:
       - name: Install Python Dependencies
         run: pip install --user --upgrade buildozer cython virtualenv
 
+      - name: Auto-Generate Clean buildozer.spec
+        run: |
+          cat <<EOF > buildozer.spec
+          [app]
+          title = UniChat
+          package.name = unichat
+          package.domain = org.unichat
+          source.dir = .
+          source.include_exts = py,png,jpg,kv,atlas,mp4
+          version = 0.1
+          requirements = python3,kivy,kivymd,requests,plyer,pillow
+          android.permissions = INTERNET,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
+          orientation = portrait
+          fullscreen = 0
+
+          [buildozer]
+          log_level = 2
+
+          [android]
+          android.archs = arm64-v8a
+          android.ndk = 25b
+          android.accept_sdk_license = True
+          android.api = 33
+          android.minapi = 21
+          EOF
+
       - name: Build APK with Buildozer
         run: |
           export PATH=$PATH:~/.local/bin/
