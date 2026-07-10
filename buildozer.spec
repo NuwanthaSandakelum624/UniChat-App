@@ -39,6 +39,7 @@ android.archs = arm64-v8a
 
 # (str) Android NDK version to use
 android.ndk = 25b
+android.ndk_api = 21
 
 # (bool) Accept SDK license
 android.accept_sdk_license = True
