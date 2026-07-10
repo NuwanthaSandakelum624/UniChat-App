@@ -22,12 +22,8 @@ from plyer import filechooser
 
 Window.size = (360, 640)
 
-# ඔයාගේ නිල Firebase Realtime Database URL එක
 FIREBASE_URL = "https://university-app-92c79-default-rtdb.firebaseio.com/"
-
-# හිස් වෙලාවට වැටෙන්න ස්ථිර නිල්/අළු පැහැති Default Avatar URL එක
 DEFAULT_AVATAR = "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-
 
 class ClickableImage(ButtonBehavior, Image):
     def on_touch_down(self, touch):
@@ -37,14 +33,12 @@ class ClickableImage(ButtonBehavior, Image):
                 return True
         return super().on_touch_down(touch)
 
-
 class HomeAvatar(FitImage):
     def on_touch_down(self, touch):
         if self.collide_point(*touch.pos):
             MDApp.get_running_app().go_to_profile()
             return True
         return super().on_touch_down(touch)
-
 
 class UniChatVideo(RelativeLayout):
     def __init__(self, source, auto_play=False, **kwargs):
@@ -130,9 +124,6 @@ class UniChatVideo(RelativeLayout):
         return super().on_touch_down(touch)
 
 
-# -------------------------------------------------------------
-# KV String - Premium Modern Layout
-# -------------------------------------------------------------
 KV = '''
 ScreenManager:
     LoginScreen:
@@ -582,7 +573,6 @@ ScreenManager:
         allow_stretch: True
         keep_ratio: True
 
-# Premium Modern UniChat Styled Post Card
 <PostCard>:
     orientation: "vertical"
     size_hint_y: None
@@ -599,7 +589,6 @@ ScreenManager:
             size: self.size
             radius: self.radius
 
-    # Header
     MDBoxLayout:
         size_hint_y: None
         height: "45dp"
@@ -638,7 +627,6 @@ ScreenManager:
             pos_hint: {"center_y": 0.5}
             on_release: app.confirm_delete_post(root.post_id)
 
-    # Text Data
     MDBoxLayout:
         orientation: "vertical"
         size_hint_y: None
@@ -657,7 +645,6 @@ ScreenManager:
         size_hint_y: None
         height: "195dp"
 
-    # Counters Panel
     MDBoxLayout:
         size_hint_y: None
         height: "22dp"
@@ -679,7 +666,6 @@ ScreenManager:
     MDSeparator:
         color: [0.9, 0.9, 0.9, 1]
 
-    # Interaction Bar
     MDBoxLayout:
         size_hint_y: None
         height: "35dp"
@@ -726,44 +712,20 @@ ScreenManager:
             pos_hint: {"center_y": 0.5}
 '''
 
-
-# -------------------------------------------------------------
-# Python Core Logic System
-# -------------------------------------------------------------
 class LoginScreen(Screen): pass
-
-
 class RegisterScreen(Screen): pass
-
-
 class HomeScreen(Screen): pass
-
-
 class ProfileScreen(Screen): pass
-
-
 class OtherProfileScreen(Screen): pass
-
-
 class CommentScreen(Screen): pass
-
-
 class ChatListScreen(Screen): pass
-
-
 class ChatScreen(Screen): pass
-
-
 class AddPostScreen(Screen): pass
-
-
 class ZoomScreen(Screen): pass
-
 
 class PostCard(MDBoxLayout):
     post_id = None
     radius = ListProperty([12, 12, 12, 12])
-
 
 class CampusApp(MDApp):
     current_username = "Anonymous"
@@ -888,7 +850,6 @@ class CampusApp(MDApp):
             self.go_to_home()
             self.in_zoom_mode = False
 
-    # 🔍 🌟 මතකයෙන් සහ ආරක්ෂිතව සර්ච් කරන ලයිව් ෆිල්ටර් සිස්ටම් එක
     def filter_users(self, text):
         scr = self.root.get_screen('home')
         scroll = scr.ids.search_results_scroll
@@ -900,7 +861,6 @@ class CampusApp(MDApp):
             scroll.height = "0dp"
             return
 
-        # Cache එක හිස් නම් Cloud එකෙන් ඔටෝ ලබා ගනී
         if not self.all_users_cache:
             try:
                 res = requests.get(f"{FIREBASE_URL}users.json")
@@ -922,7 +882,6 @@ class CampusApp(MDApp):
                 img = FitImage(source=pic, size_hint=(None, None), size=("36dp", "36dp"), radius=[18, 18, 18, 18],
                                pos_hint={"center_y": 0.5})
 
-                # 🌟 සුදු පසුබිමට පැහැදිලිව පෙනෙන්නට තද කළු පැහැය (Custom text_color) ලබා දුන්නා
                 btn = MDTextButton(text=username, bold=True, font_style="Subtitle1", pos_hint={"center_y": 0.5},
                                    theme_text_color="Custom", text_color=[0, 0, 0, 1])
                 btn.bind(on_release=lambda x, u=username: self.click_search_result(u))
@@ -1096,11 +1055,9 @@ class CampusApp(MDApp):
         except Exception as e:
             print(f"Delete failed: {e}")
 
-    # 🌟 eed4a13a-f85d-4a56-89ca-6e3a0cd60c2d හි තිබූ අකුරු එළියට පැනීමේ ගැටලුව සම්පූර්ණයෙන්ම විසඳූ Alert ක්‍රමය
     def show_safe_alert(self, title, message):
         box = MDBoxLayout(orientation='vertical', padding=15, spacing=15)
 
-        # text_size බින්දු කිරීමෙන් අකුරු කොටුව ඇතුළතටම සිර වී පේළි මාරු වේ (Auto Wrap)
         lbl = Label(text=message, color=[1, 1, 1, 1], halign="center", valign="middle")
         lbl.bind(size=lambda s, w: setattr(s, 'text_size', (w[0] * 0.9, None)))
         box.add_widget(lbl)
@@ -1286,7 +1243,6 @@ class CampusApp(MDApp):
         self.pause_all_videos()
         self.root.current = "profile"
         self.refresh_feeds()
-
 
 if __name__ == "__main__":
     CampusApp().run()
