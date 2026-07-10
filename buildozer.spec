@@ -18,7 +18,7 @@ source.include_exts = py,png,jpg,kv,atlas,mp4
 version = 0.1
 
 # (list) Application requirements
-requirements = python3,kivy,kivymd,requests,plyer,pillow,ffpyplayer
+requirements = python3,kivy,kivymd,requests,plyer,pillow
 
 # (list) Permissions
 android.permissions = INTERNET,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
