@@ -12,16 +12,16 @@ package.domain = org.unichat
 source.dir = .
 
 # (list) Source files to include
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas,mp4
 
 # (str) Application version
 version = 0.1
 
 # (list) Application requirements
-requirements = python3,kivy,kivymd,requests,plyer
+requirements = python3,kivy,kivymd,requests,plyer,pillow,ffpyplayer
 
 # (list) Permissions
-android.permissions = INTERNET
+android.permissions = INTERNET,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 
 # (str) Orientation
 orientation = portrait
