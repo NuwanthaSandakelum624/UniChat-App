@@ -37,7 +37,7 @@ log_level = 2
 # (list) Android archs to build
 android.archs = arm64-v8a
 
-# (str) Android NDK version to use (මේක අනිවාර්යයි)
+# (str) Android NDK version to use
 android.ndk = 25b
 
 # (bool) Accept SDK license
