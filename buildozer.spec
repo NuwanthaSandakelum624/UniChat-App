@@ -2,6 +2,7 @@
 title = UniChat
 package.name = unichat
 package.domain = org.unichat
+source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 0.1
 requirements = python3,kivy,kivymd,requests,plyer
