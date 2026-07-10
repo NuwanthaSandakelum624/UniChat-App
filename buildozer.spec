@@ -1,20 +1,11 @@
 [app]
 title = UniChat
 package.name = unichat
-package.domain = org.campus
-source.dir = .
+package.domain = org.unichat
 source.include_exts = py,png,jpg,kv,atlas
 version = 0.1
-requirements = python3,kivy==2.3.0,kivymd,requests,urllib3,plyer
-orientation = portrait
-fullscreen = 0
-android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
+requirements = python3,kivy,kivymd,requests,plyer
+android.permissions = INTERNET
+android.accept_sdk_license = True
 android.api = 33
-android.minapi = 24
-android.archs = arm64-v8a, armeabi-v7a
-android.debug_artifact = apk
-android.release_artifact = apk
-
-[buildozer]
-log_level = 2
-warn_on_root = 1
+android.minapi = 21
