@@ -25,6 +25,9 @@ android.archs = arm64-v8a, armeabi-v7a
 # Needed by plyer.filechooser on modern Android
 android.allow_backup = True
 
+# Auto-accept SDK licenses so CI builds don't hang waiting for input
+android.accept_sdk_license = True
+
 [buildozer]
 log_level = 2
 warn_on_root = 1
