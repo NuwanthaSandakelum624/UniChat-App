@@ -1,33 +1,18 @@
-name: Build Android APK
+name: Build APK
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout source
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - uses: ArtemSBulgakov/buildozer-action@v1
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y build-essential libltdl-dev libffi-dev libssl-dev python3-dev autoconf libtool pkg-config
-        pip install --upgrade buildozer cython
-
-    - name: Build with Buildozer
-      run: buildozer android debug
-
-    - name: Upload APK
-      uses: actions/upload-artifact@v3
-      with:
-        name: android-apk
-        path: bin/*.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: APK
+          path: bin/*.apk
