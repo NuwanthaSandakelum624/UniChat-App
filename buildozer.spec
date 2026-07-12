@@ -7,7 +7,7 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,mp4
 
 version = 1.0
-requirements = python3,kivy==2.3.0,kivymd==1.2.0,requests,plyer,pillow,certifi,urllib3,idna,charset-normalizer
+requirements = python3,kivy==2.3.0,kivymd==1.2.0,requests,plyer
 
 # Screen orientation
 orientation = portrait
@@ -17,10 +17,10 @@ fullscreen = 0
 android.permissions = INTERNET,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,READ_MEDIA_IMAGES,READ_MEDIA_VIDEO
 
 # API / SDK targets
-android.api = 33
+android.api = 31
 android.minapi = 21
 android.ndk = 25b
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = arm64-v8a
 
 # Needed by plyer.filechooser on modern Android
 android.allow_backup = True
