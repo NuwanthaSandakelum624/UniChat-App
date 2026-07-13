@@ -2,30 +2,19 @@
 title = UniChat
 package.name = unichat
 package.domain = org.unichat
-
-source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,mp4
-
-version = 1.0
-requirements = python3,kivy==2.3.0,kivymd==1.2.0,requests,plyer
-
-# Screen orientation
+source.dir =.
+source.include_exts = py,png,jpg,kv,atlas,ttf
+version = 1.0.0
+requirements = python3,kivy==2.3.0,kivymd==1.2.0,requests,plyer,urllib3,chardet,idna,certifi
 orientation = portrait
 fullscreen = 0
 
-# Android permissions
-android.permissions = INTERNET,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,READ_MEDIA_IMAGES,READ_MEDIA_VIDEO
+[buildozer]
+log_level = 2
 
-# API / SDK targets
+android.permissions = INTERNET,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 android.api = 33
 android.minapi = 21
 android.ndk = 25b
-android.archs = arm64-v8a
-
-# Needed by plyer.filechooser on modern Android
-android.allow_backup = True
 android.accept_sdk_license = True
-
-[buildozer]
-log_level = 2
-warn_on_root = 1
+android.archs = arm64-v8a
