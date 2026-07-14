@@ -29,6 +29,12 @@ android.api = 33
 # (int) Minimum Android API
 android.minapi = 21
 
+# (str) Android NDK version to use (Force 25b to fix compile errors)
+android.ndk = 25b
+
+# (list) The Android archs to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
+android.archs = arm64-v8a, armeabi-v7a
+
 # (bool) Android SDK license automatically accepted
 android.accept_sdk_license = True
 
