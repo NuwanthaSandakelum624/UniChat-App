@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch: # Allows you to trigger the build manually from the GitHub Actions tab
+  workflow_dispatch: 
 
 jobs:
   build:
@@ -31,26 +31,30 @@ jobs:
           sudo apt update
           sudo apt install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
 
+      - name: Force PIP Constraint (The Fix)
+        run: |
+          echo "pip<24.1" > constraints.txt
+          echo "PIP_CONSTRAINT=$GITHUB_WORKSPACE/constraints.txt" >> $GITHUB_ENV
+
       - name: Install Buildozer and Cython
         run: |
-          pip install "pip<24.1"
           pip install buildozer cython==0.29.36
 
       - name: Cache Buildozer global directory
         uses: actions/cache@v4
         with:
           path: ~/.buildozer
-          key: buildozer-global-${{ hashFiles('buildozer.spec') }}
+          key: buildozer-global-v4-${{ hashFiles('buildozer.spec') }}
           restore-keys: |
-            buildozer-global-
+            buildozer-global-v4-
 
       - name: Cache Buildozer local directory
         uses: actions/cache@v4
         with:
           path: .buildozer
-          key: buildozer-local-${{ hashFiles('buildozer.spec') }}
+          key: buildozer-local-v4-${{ hashFiles('buildozer.spec') }}
           restore-keys: |
-            buildozer-local-
+            buildozer-local-v4-
 
       - name: Build with Buildozer
         run: yes | buildozer android debug
