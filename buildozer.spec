@@ -29,10 +29,10 @@ android.api = 33
 # (int) Minimum Android API
 android.minapi = 21
 
-# (str) Android NDK version to use (Force 25b to fix compile errors)
+# (str) Android NDK version to use
 android.ndk = 25b
 
-# (list) The Android archs to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
+# (list) The Android archs to build for
 android.archs = arm64-v8a, armeabi-v7a
 
 # (bool) Android SDK license automatically accepted
@@ -40,10 +40,6 @@ android.accept_sdk_license = True
 
 # (bool) Indicate if the application should be fullscreen
 fullscreen = 0
-
-# (str) Presplash and Icon (Commented out because source files might be missing)
-# presplash.filename = %(source.dir)s/data/presplash.png
-# icon.filename = %(source.dir)s/data/icon.png
 
 [buildozer]
 # (int) Log level (0 = error only, 1 = info, 2 = debug)
